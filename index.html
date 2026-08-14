@@ -3,293 +3,658 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>공주월송 진아레히 | 분양상담</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
+
 body{
- margin:0;
- font-family:Arial,"Noto Sans KR",sans-serif;
- background:#f5f5f5;
- color:#222;
+  margin:0;
+  background:#06172b;
+  font-family:Arial,"Noto Sans KR",sans-serif;
+  color:white;
 }
-.hero{
- background:linear-gradient(135deg,#102542,#1f4e79);
- color:white;
- text-align:center;
- padding:55px 20px;
+
+.wrap{
+  max-width:900px;
+  margin:auto;
+  background:#071a31;
+  min-height:100vh;
 }
-.hero h1{
- font-size:36px;
- margin:0 0 12px;
+
+/* 상단 */
+.top{
+  padding:16px;
+  text-align:center;
+  background:#061326;
+  border-bottom:1px solid #b99245;
 }
-.hero h2{
- font-size:24px;
- color:#ffd966;
+
+.top h1{
+  margin:0;
+  font-size:24px;
+  color:#fff;
 }
-.hero p{
- font-size:18px;
- line-height:1.7;
+
+.top p{
+  margin:7px 0 0;
+  color:#d7b56d;
+  font-size:15px;
 }
-.section{
- max-width:800px;
- margin:auto;
- padding:35px 20px;
- text-align:center;
- background:white;
+
+/* 메인 이미지 */
+.main-image{
+  position:relative;
+  width:100%;
 }
-.section h2{
- font-size:27px;
- color:#17365d;
+
+.main-image img{
+  display:block;
+  width:100%;
+  height:auto;
 }
+
+/* 이미지 위 클릭 영역 */
+.hotspot{
+  position:absolute;
+  border:2px solid transparent;
+  background:transparent;
+  cursor:pointer;
+}
+
+.hotspot:active{
+  background:rgba(255,200,70,.15);
+}
+
+/* 조건변경 */
+.condition1{
+  left:4%;
+  top:45%;
+  width:52%;
+  height:9%;
+}
+
+.condition2{
+  left:57%;
+  top:45%;
+  width:39%;
+  height:9%;
+}
+
+/* 입지/단지 장점 */
 .features{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:12px;
- margin-top:25px;
+  left:3%;
+  top:54%;
+  width:94%;
+  height:14%;
 }
-.feature{
- background:#f1f5f9;
- padding:20px 10px;
- border-radius:12px;
- font-size:17px;
- font-weight:bold;
+
+/* 사전예약 혜택 */
+.gift1{
+  left:3%;
+  top:69%;
+  width:46%;
+  height:18%;
 }
-.gift{
- background:#fff3cd;
- padding:25px;
- border-radius:15px;
- margin-top:25px;
+
+/* 계약자 혜택 */
+.gift2{
+  left:51%;
+  top:69%;
+  width:46%;
+  height:18%;
 }
-.gift h2{
- color:#c00000;
+
+/* 전화번호 */
+.phone-hotspot{
+  left:4%;
+  top:89%;
+  width:92%;
+  height:8%;
 }
-.manager{
- font-size:25px;
- font-weight:bold;
- margin-top:25px;
+
+/* 하단 고정 버튼 */
+.bottom-bar{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  display:flex;
+  z-index:50;
+  max-width:900px;
+  margin:auto;
+  box-shadow:0 -4px 20px rgba(0,0,0,.35);
 }
-.phone{
- display:block;
- margin:15px auto;
- max-width:500px;
- background:#d71920;
- color:white;
- padding:20px;
- border-radius:15px;
- text-decoration:none;
- font-size:34px;
- font-weight:bold;
+
+.bottom-bar a,
+.bottom-bar button{
+  flex:1;
+  border:0;
+  padding:17px 5px;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
 }
+
 .call{
- position:fixed;
- bottom:0;
- left:0;
- width:100%;
- background:#d71920;
- color:white;
- text-align:center;
- padding:17px;
- font-size:22px;
- font-weight:bold;
- text-decoration:none;
+  background:#b68b3d;
+  color:#06172b;
+  text-decoration:none;
+  text-align:center;
 }
+
+.apply{
+  background:#071a31;
+  color:#fff;
+}
+
+/* 팝업 공통 */
+.modal{
+  display:none;
+  position:fixed;
+  z-index:100;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.72);
+  padding:18px;
+  overflow:auto;
+}
+
+.modal-box{
+  max-width:520px;
+  margin:50px auto;
+  background:white;
+  color:#182132;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 15px 50px rgba(0,0,0,.45);
+}
+
+.modal-head{
+  background:linear-gradient(135deg,#071a31,#12365b);
+  color:white;
+  padding:25px 22px;
+  text-align:center;
+}
+
+.modal-head h2{
+  margin:0;
+  color:#e5c070;
+  font-size:25px;
+}
+
+.modal-content{
+  padding:22px;
+}
+
+.modal-content h3{
+  color:#9a7028;
+}
+
+.close{
+  width:100%;
+  border:0;
+  background:#eee;
+  padding:15px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+/* 상담 폼 */
+.form-group{
+  margin-bottom:14px;
+}
+
+.form-group label{
+  display:block;
+  margin-bottom:6px;
+  font-weight:bold;
+}
+
+.form-group input,
+.form-group select{
+  width:100%;
+  padding:14px;
+  border:1px solid #ccc;
+  border-radius:10px;
+  font-size:16px;
+}
+
+.submit-btn{
+  width:100%;
+  border:0;
+  border-radius:12px;
+  padding:17px;
+  background:#b68b3d;
+  color:white;
+  font-size:18px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.direct-call{
+  display:block;
+  margin-top:12px;
+  padding:15px;
+  background:#071a31;
+  color:white;
+  text-align:center;
+  text-decoration:none;
+  border-radius:12px;
+  font-weight:bold;
+}
+
 .notice{
- font-size:13px;
- color:#777;
- margin-top:20px;
- padding-bottom:70px;
+  font-size:12px;
+  color:#777;
+  margin-top:12px;
+  line-height:1.5;
 }
-@media(max-width:600px){
- .hero h1{font-size:31px}
- .features{grid-template-columns:1fr}
- .phone{font-size:30px}
+
+.gold{
+  color:#a87722;
+  font-weight:bold;
 }
+
+.space{
+  height:75px;
+}
+
 </style>
 </head>
 
 <body>
- 
 
-<section class="hero" style="display:none;">
- <h1>공주월송 진아레히</h1>
- <h2>선착순 동·호 지정</h2>
- <p>
- 공주에서 새 아파트를 찾고 계신가요?<br>
- 방문예약 및 분양상담을 도와드립니다.
- </p>
-</section>
- <div onclick="document.getElementById('detailBox').style.display='block';document.getElementById('detailBox').scrollIntoView({behavior:'smooth'});" style="cursor:pointer;">
-  <img src="./banner-1.png?v=3" alt="공주월송 진아레히"
-       style="width:100%;height:auto;display:block;">
+<div class="wrap">
+
+  <div class="top">
+    <h1>공주월송 진아레히</h1>
+    <p>선착순 동·호 지정 · 분양상담</p>
+  </div>
+
+  <div class="main-image">
+
+    <!-- 메인 이미지 -->
+    <img src="배너-1.png" alt="공주월송 진아레히">
+
+    <!-- 1차 계약금 -->
+    <button class="hotspot condition1"
+      onclick="openInfo('condition')"
+      aria-label="조건 변경 자세히 보기"></button>
+
+    <!-- 정계약 5% -->
+    <button class="hotspot condition2"
+      onclick="openInfo('contract')"
+      aria-label="정계약 조건 자세히 보기"></button>
+
+    <!-- 단지 및 입지 -->
+    <button class="hotspot features"
+      onclick="openInfo('features')"
+      aria-label="단지 장점 자세히 보기"></button>
+
+    <!-- 예약 혜택 -->
+    <button class="hotspot gift1"
+      onclick="openInfo('reservation')"
+      aria-label="사전예약 혜택 보기"></button>
+
+    <!-- 계약 혜택 -->
+    <button class="hotspot gift2"
+      onclick="openInfo('gift')"
+      aria-label="계약자 혜택 보기"></button>
+
+    <!-- 전화번호 -->
+    <a class="hotspot phone-hotspot"
+       href="tel:15557258"
+       aria-label="전화 상담"></a>
+
+  </div>
+
+  <div class="space"></div>
+
 </div>
-<section class="section">
 
- <h2 style="font-size:clamp(22px,6vw,27px);white-space:nowrap;">
-공주월송 진아레히 핵심 포인트
- </h2>
 
- <div class="features">
-  <div class="feature">🏠 총 811세대 신축 아파트</div>
-  <div class="feature">👶 단지 내 국공립 어린이집</div>
-  <div class="feature">🚌 입주민 통학버스 운영</div>
-  <div class="feature">🏫 초등학교 약 5분 거리</div>
-  <div class="feature">🚌 공주·세종 BRT 연결</div>
-  <div class="feature">🌳 단지 내 조경 특화</div>
-  <div class="feature">🚗 광폭 주차공간</div>
-  <div class="feature">🛣 세종·서울 고속도로 연결 예정</div>
- </div>
+<!-- 하단 고정버튼 -->
+<div class="bottom-bar">
+  <a href="tel:15557258" class="call">
+    ☎ 전화상담
+  </a>
 
- <div class="gift">
-  <h2>🎁 방문 고객 특별 혜택</h2>
-  <p><strong>사전예약 방문 시 사은품 증정</strong></p>
-  <p>자세한 제공 조건은 상담 시 안내드립니다.</p>
- </div>
+  <button class="apply" onclick="openConsult()">
+    상담 신청
+  </button>
+</div>
 
- <p class="manager">분양상담 · 이정안 팀장</p>
 
- <p>방문예약 및 분양조건 상담</p>
+<!-- 상세내용 팝업 -->
+<div id="infoModal" class="modal">
 
- <a class="phone" href="tel:15557258">
- ☎ 1555-7258
- </a>
+  <div class="modal-box">
 
- <p>
- 궁금하신 사항은 전화로 편하게 문의해주세요.
- </p>
+    <div class="modal-head">
+      <h2 id="infoTitle">상세안내</h2>
+    </div>
 
- <div class="notice">
- ※ 본 페이지의 내용 및 혜택은 실제 분양 조건에 따라 변경될 수 있으므로
- 자세한 사항은 상담을 통해 확인하시기 바랍니다.
- </div>
+    <div class="modal-content" id="infoText"></div>
 
-</section>
-
-<a class="call" href="tel:15557258">
- 📞 지금 바로 전화상담 1555-7258
-</a>
-
-<!-- 화려한 메인 배너 + 상세정보 + 상담신청 -->
-<section style="padding:20px;background:#070b1a;text-align:center;">
-
-  <h2 style="color:#ffd700;font-size:28px;text-shadow:0 0 12px #ff00aa;">
-    ✨ 공주월송 진아레히 특별 분양안내 ✨
-  </h2>
-
-  <div onclick="document.getElementById('detailBox').style.display='block'"
-       style="cursor:pointer;border:3px solid #ffd700;border-radius:18px;
-       overflow:hidden;box-shadow:0 0 25px #ff00aa,0 0 45px #ffd700;">
-
-    <img src="배너-1.png"
-         alt="공주월송 진아레히"
-         style="width:100%;display:block;">
+    <button class="close" onclick="closeInfo()">
+      닫기
+    </button>
 
   </div>
 
-  <p style="color:#ffd700;font-weight:bold;font-size:19px;">
-    👆 배너를 누르면 자세한 내용이 나옵니다
-  </p>
+</div>
 
-  <div id="detailBox"
-       style="display:none;background:#101a35;color:white;
-       padding:22px;margin-top:20px;border-radius:20px;
-       border:2px solid #ffd700;text-align:left;">
 
-    <h2 style="text-align:center;color:#ffd700;">
-      🏆 공주월송 진아레히 핵심 안내
-    </h2>
+<!-- 상담신청 팝업 -->
+<div id="consultModal" class="modal">
 
-    <p>🏠 총 811세대 신축 아파트</p>
-    <p>👶 단지 내 국공립 어린이집</p>
-    <p>🚌 입주민 전용 통학버스 운영</p>
-    <p>🏫 초등학교 약 5분 거리</p>
-    <p>🚍 공주·세종 BRT 연결</p>
-    <p>🌳 단지 내 조경 특화</p>
-    <p>🚗 광폭 주차공간</p>
-    <p>🛣 세종·서울 고속도로 연결 예정</p>
+  <div class="modal-box">
 
-    <hr style="border-color:#ffd700;">
+    <div class="modal-head">
+      <h2>공주월송 진아레히</h2>
+      <p>방문예약 · 분양상담 신청</p>
+    </div>
 
-    <h2 style="text-align:center;color:#ffdf6b;">
-      🎁 방문예약 특별혜택
-    </h2>
+    <div class="modal-content">
 
-    <p style="text-align:center;">
-      사전예약 방문 고객 혜택은 상담 시 자세히 안내드립니다.
-    </p>
+      <div class="form-group">
+        <label>성함</label>
+        <input id="name" type="text" placeholder="성함을 입력해주세요">
+      </div>
 
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdOUIWe-QiJeyOo06HxYEj3L6cI1LFdiyzcJvMDcwmtRBTxLw/viewform?usp=publish-editor"
-       style="display:block;background:linear-gradient(90deg,#ffd700,#ff9700);
-       color:#111;text-align:center;padding:17px;border-radius:14px;
-       font-size:21px;font-weight:bold;margin-top:15px;">
-       📝 방문예약 신청하기
-    </a>
+      <div class="form-group">
+        <label>연락처</label>
+        <input id="phone" type="tel" placeholder="010-0000-0000">
+      </div>
+
+      <div class="form-group">
+        <label>관심 내용</label>
+
+        <select id="interest">
+          <option>방문예약</option>
+          <option>분양가격 상담</option>
+          <option>동·호수 상담</option>
+          <option>계약조건 상담</option>
+          <option>기타문의</option>
+        </select>
+      </div>
+
+      <button class="submit-btn" onclick="requestConsult()">
+        상담 신청하기
+      </button>
+
+      <a class="direct-call" href="tel:15557258">
+        ☎ 바로 전화하기 1555-7258
+      </a>
+
+      <p class="notice">
+        상담 신청을 누르면 담당자에게 전달할 내용을 확인할 수 있습니다.
+        개인정보는 상담 목적 외 사용하지 않습니다.
+      </p>
+
+    </div>
+
+    <button class="close" onclick="closeConsult()">
+      나중에 보기
+    </button>
 
   </div>
-</section>
 
+</div>
 
-<section id="reservation"
- style="padding:25px 18px;background:#fff;color:#222;">
-
- <h2 style="text-align:center;color:#102542;">
-   📝 방문예약 · 상담신청
- </h2>
-
- <label>이름</label>
- <input id="customerName"
- style="width:100%;padding:14px;margin:7px 0 15px;
- border:1px solid #ccc;border-radius:10px;"
- placeholder="이름을 입력하세요">
-
- <label>연락처</label>
- <input id="customerPhone"
- style="width:100%;padding:14px;margin:7px 0 15px;
- border:1px solid #ccc;border-radius:10px;"
- placeholder="010-0000-0000">
-
- <label>방문 희망일</label>
- <input type="date" id="visitDate"
- style="width:100%;padding:14px;margin:7px 0 15px;
- border:1px solid #ccc;border-radius:10px;">
-
- <button onclick="applyConsult()"
- style="width:100%;padding:18px;border:0;border-radius:14px;
- background:linear-gradient(90deg,#ffcf33,#ff8c00);
- font-size:21px;font-weight:bold;">
- ✨ 상담 신청하기
- </button>
-
- <a href="tel:15557258"
- style="display:block;margin-top:12px;background:#d71920;
- color:white;text-align:center;padding:18px;border-radius:14px;
- font-size:23px;font-weight:bold;">
- ☎ 바로 전화 1555-7258
- </a>
-
-</section>
 
 <script>
-function applyConsult(){
- const name=document.getElementById("customerName").value;
- const phone=document.getElementById("customerPhone").value;
- const date=document.getElementById("visitDate").value;
 
- if(!name || !phone){
-   alert("이름과 연락처를 입력해주세요.");
-   return;
- }
+const contents = {
 
- alert(
-   "상담 신청내용\n\n"+
-   "이름 : "+name+"\n"+
-   "연락처 : "+phone+"\n"+
-   "방문희망일 : "+(date || "미정")+
-   "\n\n전화상담으로 연결합니다."
- );
+condition:{
+title:"조건 변경 안내",
+html:`
+<h3>새롭게 변경된 계약 조건</h3>
 
- location.href="tel:15557258";
+<p>
+<span class="gold">1차 계약금 500만원</span>
+</p>
+
+<p>
+부담을 낮춘 새로운 계약조건으로
+공주월송 진아레히를 만나보세요.
+</p>
+
+<p>
+정확한 적용조건 및 세부사항은
+분양상담을 통해 확인해 주세요.
+</p>
+
+<a class="direct-call" href="tel:15557258">
+☎ 자세히 상담받기
+</a>
+`
+},
+
+contract:{
+title:"정계약 조건",
+html:`
+<h3>정계약 5%</h3>
+
+<p>
+현재 <span class="gold">정계약 5%</span>
+조건으로 상담이 가능합니다.
+</p>
+
+<p>
+동·호수별 조건은 달라질 수 있으므로
+상담을 통해 확인해주세요.
+</p>
+
+<a class="direct-call" href="tel:15557258">
+☎ 계약조건 문의
+</a>
+`
+},
+
+features:{
+title:"공주월송 진아레히 특별한 이유",
+html:`
+<h3>생활을 생각한 프리미엄 단지</h3>
+
+<p>✓ 총 811세대 신축 아파트</p>
+
+<p>✓ 단지 내 국공립 어린이집</p>
+
+<p>✓ 입주민 전용 통학버스 운영</p>
+
+<p>✓ 초등학교 5분 거리</p>
+
+<p>✓ 공주·세종 BRT 연결</p>
+
+<p>✓ 세종 이마트 차량 약 10분</p>
+
+<p>✓ 단지 내 특화 조경</p>
+
+<p>✓ 광폭주차장 약 1.57대 : 1</p>
+
+<p>✓ 세종·서울 고속도로 연결 예정</p>
+
+<a class="direct-call" href="tel:15557258">
+☎ 상담받기
+</a>
+`
+},
+
+reservation:{
+title:"사전예약 특별 혜택",
+html:`
+<h3>이정안 팀장 찾을 시 또는 사전예약 시</h3>
+
+<p>
+🎁 <span class="gold">신세계상품권 1만원</span>
+</p>
+
+<p>
+＋
+</p>
+
+<p>
+🎁 <span class="gold">냄비세트</span>
+</p>
+
+<p>
+방문 전 반드시 사전예약 후
+혜택 적용 여부를 확인해주세요.
+</p>
+
+<button class="submit-btn" onclick="closeInfo();openConsult();">
+방문예약 신청하기
+</button>
+`
+},
+
+gift:{
+title:"계약 고객 특별 혜택",
+html:`
+<h3>계약자 전원 특별 혜택</h3>
+
+<p>
+🎁 <span class="gold">그릇세트</span>
+</p>
+
+<p>
+＋
+</p>
+
+<p>
+✈️ <span class="gold">
+제주도 항공권 및 숙박권
+</span>
+</p>
+
+<p>
+세부 제공조건과 이용조건은
+계약 전 담당자에게 확인해주세요.
+</p>
+
+<a class="direct-call" href="tel:15557258">
+☎ 혜택 자세히 문의하기
+</a>
+`
 }
+
+};
+
+
+function openInfo(type){
+
+document.getElementById("infoTitle").innerHTML =
+contents[type].title;
+
+document.getElementById("infoText").innerHTML =
+contents[type].html;
+
+document.getElementById("infoModal").style.display =
+"block";
+
+}
+
+
+function closeInfo(){
+
+document.getElementById("infoModal").style.display =
+"none";
+
+}
+
+
+function openConsult(){
+
+document.getElementById("consultModal").style.display =
+"block";
+
+}
+
+
+function closeConsult(){
+
+document.getElementById("consultModal").style.display =
+"none";
+
+}
+
+
+function requestConsult(){
+
+const name =
+document.getElementById("name").value.trim();
+
+const phone =
+document.getElementById("phone").value.trim();
+
+const interest =
+document.getElementById("interest").value;
+
+
+if(name === "" || phone === ""){
+
+alert("성함과 연락처를 입력해주세요.");
+
+return;
+
+}
+
+
+alert(
+name +
+" 고객님, 상담 신청 내용을 확인했습니다.\n\n" +
+"관심내용 : " + interest +
+"\n연락처 : " + phone +
+"\n\n빠른 상담은 아래 전화상담 버튼을 이용해주세요."
+);
+
+}
+
+
+/* 홈페이지 처음 열릴 때 상담창 자동 표시 */
+window.onload = function(){
+
+setTimeout(function(){
+
+openConsult();
+
+},800);
+
+}
+
+
+/* 팝업 바깥 터치하면 닫기 */
+window.onclick = function(event){
+
+const info =
+document.getElementById("infoModal");
+
+const consult =
+document.getElementById("consultModal");
+
+if(event.target === info){
+
+closeInfo();
+
+}
+
+if(event.target === consult){
+
+closeConsult();
+
+}
+
+}
+
 </script>
+
 </body>
 </html>
