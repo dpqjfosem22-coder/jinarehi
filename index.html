@@ -163,5 +163,127 @@ body{
  📞 지금 바로 전화상담 1555-7258
 </a>
 
+<!-- 화려한 메인 배너 + 상세정보 + 상담신청 -->
+<section style="padding:20px;background:#070b1a;text-align:center;">
+
+  <h2 style="color:#ffd700;font-size:28px;text-shadow:0 0 12px #ff00aa;">
+    ✨ 공주월송 진아레히 특별 분양안내 ✨
+  </h2>
+
+  <div onclick="document.getElementById('detailBox').style.display='block'"
+       style="cursor:pointer;border:3px solid #ffd700;border-radius:18px;
+       overflow:hidden;box-shadow:0 0 25px #ff00aa,0 0 45px #ffd700;">
+
+    <img src="배너-1.png"
+         alt="공주월송 진아레히"
+         style="width:100%;display:block;">
+
+  </div>
+
+  <p style="color:#ffd700;font-weight:bold;font-size:19px;">
+    👆 배너를 누르면 자세한 내용이 나옵니다
+  </p>
+
+  <div id="detailBox"
+       style="display:none;background:#101a35;color:white;
+       padding:22px;margin-top:20px;border-radius:20px;
+       border:2px solid #ffd700;text-align:left;">
+
+    <h2 style="text-align:center;color:#ffd700;">
+      🏆 공주월송 진아레히 핵심 안내
+    </h2>
+
+    <p>🏠 총 811세대 신축 아파트</p>
+    <p>👶 단지 내 국공립 어린이집</p>
+    <p>🚌 입주민 전용 통학버스 운영</p>
+    <p>🏫 초등학교 약 5분 거리</p>
+    <p>🚍 공주·세종 BRT 연결</p>
+    <p>🌳 단지 내 조경 특화</p>
+    <p>🚗 광폭 주차공간</p>
+    <p>🛣 세종·서울 고속도로 연결 예정</p>
+
+    <hr style="border-color:#ffd700;">
+
+    <h2 style="text-align:center;color:#ffdf6b;">
+      🎁 방문예약 특별혜택
+    </h2>
+
+    <p style="text-align:center;">
+      사전예약 방문 고객 혜택은 상담 시 자세히 안내드립니다.
+    </p>
+
+    <a href="#reservation"
+       style="display:block;background:linear-gradient(90deg,#ffd700,#ff9700);
+       color:#111;text-align:center;padding:17px;border-radius:14px;
+       font-size:21px;font-weight:bold;margin-top:15px;">
+       📝 방문예약 신청하기
+    </a>
+
+  </div>
+</section>
+
+
+<section id="reservation"
+ style="padding:25px 18px;background:#fff;color:#222;">
+
+ <h2 style="text-align:center;color:#102542;">
+   📝 방문예약 · 상담신청
+ </h2>
+
+ <label>이름</label>
+ <input id="customerName"
+ style="width:100%;padding:14px;margin:7px 0 15px;
+ border:1px solid #ccc;border-radius:10px;"
+ placeholder="이름을 입력하세요">
+
+ <label>연락처</label>
+ <input id="customerPhone"
+ style="width:100%;padding:14px;margin:7px 0 15px;
+ border:1px solid #ccc;border-radius:10px;"
+ placeholder="010-0000-0000">
+
+ <label>방문 희망일</label>
+ <input type="date" id="visitDate"
+ style="width:100%;padding:14px;margin:7px 0 15px;
+ border:1px solid #ccc;border-radius:10px;">
+
+ <button onclick="applyConsult()"
+ style="width:100%;padding:18px;border:0;border-radius:14px;
+ background:linear-gradient(90deg,#ffcf33,#ff8c00);
+ font-size:21px;font-weight:bold;">
+ ✨ 상담 신청하기
+ </button>
+
+ <a href="tel:15557258"
+ style="display:block;margin-top:12px;background:#d71920;
+ color:white;text-align:center;padding:18px;border-radius:14px;
+ font-size:23px;font-weight:bold;">
+ ☎ 바로 전화 1555-7258
+ </a>
+
+</section>
+
+<script>
+function applyConsult(){
+ const name=document.getElementById("customerName").value;
+ const phone=document.getElementById("customerPhone").value;
+ const date=document.getElementById("visitDate").value;
+
+ if(!name || !phone){
+   alert("이름과 연락처를 입력해주세요.");
+   return;
+ }
+
+ alert(
+   "상담 신청내용\n\n"+
+   "이름 : "+name+"\n"+
+   "연락처 : "+phone+"\n"+
+   "방문희망일 : "+(date || "미정")+
+   "\n\n전화상담으로 연결합니다."
+ );
+
+ location.href="tel:15557258";
+}
+</script>
 </body>
 </html>
